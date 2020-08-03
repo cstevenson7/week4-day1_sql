@@ -11,6 +11,7 @@ WHERE amount BETWEEN 3.99 AND 5.99;
 
 --3. What film does the store have the most of ?
 
+-- Did not use limit as there were multiple films with the same count
 SELECT film_id, COUNT(film_id) as count_film_id_store1
 FROM inventory
 WHERE store_id = 1
@@ -37,7 +38,8 @@ WHERE last_name LIKE 'William';
 SELECT staff_id, COUNT(amount) as num_payments_per_employee
 FROM payment
 GROUP BY staff_id
-ORDER BY COUNT(amount) DESC;
+ORDER BY COUNT(amount) DESC
+LIMIT 1 ;
 
 
 
@@ -50,7 +52,8 @@ FROM address;
 SELECT film_id , COUNT(actor_id) as num_actors_in_film
 FROM film_actor
 GROUP BY film_id
-ORDER BY COUNT(actor_id) DESC;
+ORDER BY COUNT(actor_id) DESC
+LIMIT 1;
 
 
 
@@ -79,7 +82,9 @@ FROM film;
 SELECT rating, count(film_id) as num_films
 FROM film
 GROUP BY rating
-ORDER BY count(film_id) DESC;
+ORDER BY count(film_id) DESC
+LIMIT 1;
+
 
 
 
